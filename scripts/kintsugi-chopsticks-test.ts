@@ -33,6 +33,8 @@ async function main(): Promise<void> {
     const filterCases: Partial<RouterTestCase>[] = [
         {from: "statemine"},
         {to: "statemine"},
+        {from: "heiko"},
+        {to: "heiko"},
     ];
 
     await runTestCasesAndExit(adaptersEndpoints, filterCases);
