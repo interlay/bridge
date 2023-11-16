@@ -8,7 +8,7 @@ import { HeikoAdapter } from "../src/adapters/parallel";
 import { KusamaAdapter } from "../src/adapters/polkadot";
 import { StatemineAdapter } from "../src/adapters/statemint";
 import { BaseCrossChainAdapter } from "../src/base-chain-adapter";
-import { runTestCasesAndExit } from "./chopsticks-test";
+import { RouterTestCase, runTestCasesAndExit } from "./chopsticks-test";
 
 main().catch((err) => {
     console.log("Error thrown by script:");
@@ -30,5 +30,10 @@ async function main(): Promise<void> {
         kusama:     { adapter: new KusamaAdapter(),     endpoints: ['ws://127.0.0.1:8005'] },
     };
 
-    await runTestCasesAndExit(adaptersEndpoints);
+    const filterCases: Partial<RouterTestCase>[] = [
+        {from: "statemine"},
+        {to: "statemine"},
+    ];
+
+    await runTestCasesAndExit(adaptersEndpoints, filterCases);
 }
