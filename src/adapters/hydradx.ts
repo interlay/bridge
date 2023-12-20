@@ -34,8 +34,8 @@ export const hydraRoutersConfig: Omit<CrossChainRouterConfigs, "from">[] = [
     to: "interlay",
     token: "INTR",
     xcm: {
-      // in chopsticks tests: 18_886_316 - add 10x margin to fee estimate
-      fee: { token: "INTR", amount: "188863160" },
+      // in chopsticks tests: 1_491_140_909 - add 10x margin to fee estimate
+      fee: { token: "INTR", amount: "14911409090" },
       weightLimit: DEST_WEIGHT,
     },
   },
