@@ -62,12 +62,22 @@
     "@ethersproject/transactions" "~5.7.0"
     "@ethersproject/wallet" "~5.7.0"
 
-"@acala-network/sdk-core@4.1.9-8", "@acala-network/sdk-core@^4.1.9-7":
+"@acala-network/sdk-core@4.1.9-8":
   version "4.1.9-8"
   resolved "https://registry.yarnpkg.com/@acala-network/sdk-core/-/sdk-core-4.1.9-8.tgz#66e9574c30f01a8d3ec8810d664e2ed595236fa8"
   integrity sha512-+aDxhScEfOuyvbBbsbAMMAXz3BRDXGRAzBAeQr6c2epJt3BGVFpouChlGRI5VJ+LpgR1dvfxZFqUAKBCy71ofg==
   dependencies:
     "@acala-network/types" "^6.0.0-34"
+    "@polkadot/api" "^10.9.1"
+    bignumber.js "^9.0.0"
+    lodash "^4.17.20"
+
+"@acala-network/sdk-core@^4.1.9-7":
+  version "4.1.9-13"
+  resolved "https://registry.yarnpkg.com/@acala-network/sdk-core/-/sdk-core-4.1.9-13.tgz#e2e9e71a2e48087a432c5418bb7646467594c4a5"
+  integrity sha512-29cV/cZfeBdrNgGE1m0LJBJ5+4rxjRXGYLRaxkoXXVbns8UWaY7BY/JvisY0mgiJNOKfEvEHvGQIgu+MwMNrsw==
+  dependencies:
+    "@acala-network/types" "^6.0.4"
     "@polkadot/api" "^10.9.1"
     bignumber.js "^9.0.0"
     lodash "^4.17.20"
@@ -106,10 +116,10 @@
   dependencies:
     "@acala-network/type-definitions" "5.1.2"
 
-"@acala-network/types@^6.0.0-34":
-  version "6.0.0-34"
-  resolved "https://registry.yarnpkg.com/@acala-network/types/-/types-6.0.0-34.tgz#b3f8b2cd919c7681663080b0adf0d09f1b681b93"
-  integrity sha512-lu6NcWDFu3d1dIhq5IbdQGiCRbwTrGbKmo+h6ZJSegy1mXaIeDBC3NB31reSAhiAedF3O/IlcPd7UGh/5QvNGg==
+"@acala-network/types@^6.0.0-34", "@acala-network/types@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@acala-network/types/-/types-6.0.4.tgz#a32695e4fa551c5061a1249f845b2f0d23f1d8df"
+  integrity sha512-3OGhsht1dISF7++EYF9ShDtu2ydvAwpKf7LzgtzPEH3wrmbJLHSHN1HDm/FlTXKi8WIQQNzvELCFxAl550vbzA==
 
 "@ampproject/remapping@^2.2.0":
   version "2.2.0"
