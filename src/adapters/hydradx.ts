@@ -39,15 +39,24 @@ export const hydraRoutersConfig: Omit<CrossChainRouterConfigs, "from">[] = [
       weightLimit: DEST_WEIGHT,
     },
   },
-  // {
-  //   to: "interlay",
-  //   token: "USDC",
-  //   // currently unknown until registered, assume similar to USDT for now
-  //   xcm: {
-  //     fee: { token: "USDC", amount: "25000" },
-  //     weightLimit: DEST_WEIGHT,
-  //   },
-  // },
+  {
+    to: "interlay",
+    token: "USDC",
+    // currently unknown until registered, assume similar to USDT for now
+    xcm: {
+      fee: { token: "USDC", amount: "25000" },
+      weightLimit: DEST_WEIGHT,
+    },
+  },
+  {
+    to: "interlay",
+    token: "USDT",
+    // recent xcm dest fees: 11_888 - use minimum of 2x margin in estimate
+    xcm: {
+      fee: { token: "USDT", amount: "25000" },
+      weightLimit: DEST_WEIGHT,
+    },
+  },
 ];
 
 export const hydraTokensConfig: Record<string, ExtendedToken> = {
@@ -72,13 +81,20 @@ export const hydraTokensConfig: Record<string, ExtendedToken> = {
     ed: "6164274209",
     toRaw: () => 17,
   },
-  // USDC: {
-  //   name: "USDC",
-  //   symbol: "USDC",
-  //   decimals: 6,
-  //   ed: "10000",
-  //   toRaw: () => 22,
-  // },
+  USDC: {
+    name: "USDC",
+    symbol: "USDC",
+    decimals: 6,
+    ed: "10000",
+    toRaw: () => 22,
+  },
+  USDT: {
+    name: "USDT",
+    symbol: "USDT",
+    decimals: 6,
+    ed: "10000",
+    toRaw: () => 10,
+  },
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

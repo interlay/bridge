@@ -106,15 +106,24 @@ export const interlayRoutersConfig: Omit<CrossChainRouterConfigs, "from">[] = [
       weightLimit: DEST_WEIGHT,
     },
   },
-  // {
-  //   to: "hydra",
-  //   token: "USDC",
-  //   xcm: {
-  //     // seen on subscan: 2_732 atomic units, need a minimum of 2x as buffer
-  //     fee: { token: "USDC", amount: "10000" },
-  //     weightLimit: DEST_WEIGHT,
-  //   },
-  // },
+  {
+    to: "hydra",
+    token: "USDC",
+    xcm: {
+      // seen on subscan: 2_732 atomic units, need a minimum of 2x as buffer
+      fee: { token: "USDC", amount: "10000" },
+      weightLimit: DEST_WEIGHT,
+    },
+  },
+  {
+    to: "hydra",
+    token: "USDT",
+    xcm: {
+      // seen on subscan: 9_118 atomic units, need a minimum of 2x as buffer
+      fee: { token: "USDT", amount: "25000" },
+      weightLimit: DEST_WEIGHT,
+    },
+  },
   {
     to: "bifrost_polkadot",
     token: "VDOT",
