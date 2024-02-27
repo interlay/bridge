@@ -1,6 +1,6 @@
 import { AnyApi, FixedPointNumber as FN } from "@acala-network/sdk-core";
 import { Storage } from "@acala-network/sdk/utils/storage";
-import { Observable, combineLatest, map } from "rxjs";
+import { Observable, combineLatest, map, from } from "rxjs";
 
 import { DeriveBalancesAll } from "@polkadot/api-derive/balances/types";
 import { SubmittableExtrinsic } from "@polkadot/api/types";
@@ -16,6 +16,7 @@ import {
   CrossChainRouterConfigs,
   CrossChainTransferParams,
 } from "../types";
+import { getPolkadotXcmDeliveryFee } from "src/utils/get-xcm-delivery-fee";
 
 export const polkadotRoutersConfig: Omit<CrossChainRouterConfigs, "from">[] = [
   {
@@ -142,29 +143,38 @@ class BasePolkadotAdapter extends BaseCrossChainAdapter {
   public subscribeMaxInput(
     token: string,
     address: string,
-    _to: ChainName
+    to: ChainName
   ): Observable<FN> {
     if (!this.balanceAdapter) {
       throw new ApiNotFound(this.chain.id);
     }
 
     return combineLatest({
+      txFee: this.estimateTxFee({
+        amount: FN.ZERO,
+        to,
+        token,
+        address,
+        signer: address,
+      }),
       balance: this.balanceAdapter
         .subscribeBalance(token, address)
         .pipe(map((i) => i.available)),
+      deliveryFee: from(
+        getPolkadotXcmDeliveryFee(this.chain.id as ChainName, to, this.api)
+      ),
     }).pipe(
-      map(({ balance }) => {
+      map(({ balance, txFee, deliveryFee }) => {
         const tokenMeta = this.balanceAdapter?.getToken(token);
-        // fixed fee of 0.05 ksm or DOT until we get paymentinfo to work again
-        const fee = FN.fromInner(
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          0.05 * Math.pow(10, tokenMeta!.decimals),
-          tokenMeta?.decimals
+        const feeFactor = 1.2;
+        const fee = FN.fromInner(txFee, tokenMeta?.decimals).mul(
+          new FN(feeFactor)
         );
 
         // always minus ed
         return balance
           .minus(fee)
+          .minus(deliveryFee)
           .minus(FN.fromInner(tokenMeta?.ed || "0", tokenMeta?.decimals));
       })
     );
