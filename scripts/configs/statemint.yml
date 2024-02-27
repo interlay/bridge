@@ -14,6 +14,18 @@ import-storage:
         - providers: 1
           data:
             free: 1000000000000000
+      -
+        -
+          - 13cKp89UHns9eDQQV3CZ1seFH6QQ6bnVeLHe4SpsekeJse1r # Sibling:2032 (Interlay), dot
+        - providers: 1
+          data:
+            free: 1000000000000000
+      -
+        -
+          - 13cKp89Uh2yWgTG28JA1QEvPUMjEPKejqkjHKf9zqLiFKjH6 # Sibling:2034 (HydraDX), dot
+        - providers: 1
+          data:
+            free: 1000000000000000
   Assets:
     Account:
       -
@@ -26,3 +38,23 @@ import-storage:
           - 1984 # Alice, usdt
           - 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
         - balance: 10000000000
+      -
+        -
+          - 1337 # Sibling:2032 (Interlay), USDC
+          - 13cKp89UHns9eDQQV3CZ1seFH6QQ6bnVeLHe4SpsekeJse1r
+        - balance: 100000000000
+      -
+        -
+          - 1984 # Sibling:2032 (Interlay), usdt
+          - 13cKp89UHns9eDQQV3CZ1seFH6QQ6bnVeLHe4SpsekeJse1r
+        - balance: 100000000000
+      -
+        -
+          - 1337 # Sibling:2034 (HydraDX), USDC
+          - 13cKp89Uh2yWgTG28JA1QEvPUMjEPKejqkjHKf9zqLiFKjH6
+        - balance: 100000000000
+      -
+        -
+          - 1984 # Sibling:2034 (HydraDX), usdt
+          - 13cKp89Uh2yWgTG28JA1QEvPUMjEPKejqkjHKf9zqLiFKjH6
+        - balance: 100000000000
