@@ -16,7 +16,7 @@ import {
   CrossChainRouterConfigs,
   CrossChainTransferParams,
 } from "../types";
-import { getPolkadotXcmDeliveryFee } from "src/utils/get-xcm-delivery-fee";
+import { getPolkadotXcmDeliveryFee } from "../utils/get-xcm-delivery-fee";
 
 export const polkadotRoutersConfig: Omit<CrossChainRouterConfigs, "from">[] = [
   {
