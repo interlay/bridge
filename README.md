@@ -17,7 +17,6 @@ All channels support transfers in both directions.
 | acala              | INTR IBTC |
 | astar              | INTR IBTC |
 | bifrost            | BNC VDOT  |
-| parallel           | INTR IBTC |
 | polkadot           | DOT       |
 | polkadot asset hub | USDT      |
 | hydradx            | HDX IBTC  |
@@ -27,7 +26,6 @@ All channels support transfers in both directions.
 | channel          | tokens         |
 | ---------------- | -------------- |
 | bifrost          | VKSM           |
-| heiko            | KBTC KINT      |
 | karura           | KBTC KINT LKSM |
 | kusama           | KSM            |
 | kusama asset hub | USDT           |
