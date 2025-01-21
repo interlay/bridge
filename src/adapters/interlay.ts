@@ -51,21 +51,6 @@ export const interlayRoutersConfig: Omit<CrossChainRouterConfigs, "from">[] = [
     xcm: { fee: { token: "IBTC", amount: "40" }, weightLimit: DEST_WEIGHT },
   },
   {
-    to: "parallel",
-    token: "INTR",
-    xcm: {
-      // during chopsticks test: fee = 6_535_947_712 Add 10x margin
-      fee: { token: "INTR", amount: "65359477120" },
-      weightLimit: DEST_WEIGHT,
-    },
-  },
-  {
-    to: "parallel",
-    token: "IBTC",
-    // during chopsticks test: fee = 103 Add 10x margin
-    xcm: { fee: { token: "IBTC", amount: "1030" }, weightLimit: DEST_WEIGHT },
-  },
-  {
     to: "phala",
     token: "PHA",
     xcm: {
@@ -214,24 +199,6 @@ export const kintsugiRoutersConfig: Omit<CrossChainRouterConfigs, "from">[] = [
     xcm: {
       // fees in tests: 7_186, need a minimum of 2x as safe buffer
       fee: { token: "USDT", amount: "20000" },
-      weightLimit: DEST_WEIGHT,
-    },
-  },
-  {
-    to: "heiko",
-    token: "KBTC",
-    xcm: {
-      // from local tests on choptsicks: actual fees sat around 103
-      fee: { token: "KBTC", amount: "1030" },
-      weightLimit: DEST_WEIGHT,
-    },
-  },
-  {
-    to: "heiko",
-    token: "KINT",
-    xcm: {
-      // recent fee during chopsticks test: fee = 16634783331. Added 10x margin
-      fee: { token: "KINT", amount: "166347833310" },
       weightLimit: DEST_WEIGHT,
     },
   },

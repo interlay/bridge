@@ -7,7 +7,6 @@ import { PolkadotAdapter, KusamaAdapter } from "./polkadot";
 import { InterlayAdapter, KintsugiAdapter } from "./interlay";
 import { StatemineAdapter, StatemintAdapter } from "./statemint";
 import { AcalaAdapter, KaruraAdapter } from "./acala";
-import { HeikoAdapter, ParallelAdapter } from "./parallel";
 import { buildTestTxWithConfigData } from "../utils/shared-spec-methods";
 import { BifrostKusamaAdapter } from "./bifrost";
 import { HydraAdapter } from "./hydradx";
@@ -72,29 +71,27 @@ describe.skip("interlay-adapter should work", () => {
   }
 
   test("connect kintsugi to do xcm", async () => {
-    const fromChains = ["kintsugi", "karura", "heiko", "bifrost", "statemine", "kusama"] as ChainName[];
+    const fromChains = ["kintsugi", "karura", "bifrost", "statemine", "kusama"] as ChainName[];
 
     await connect(fromChains);
 
     const kintsugi = new KintsugiAdapter();
     const karura = new KaruraAdapter();
-    const heiko = new HeikoAdapter();
     const bifrost = new BifrostKusamaAdapter();
     const statemine = new StatemineAdapter();
     const kusama = new KusamaAdapter();
 
     await kintsugi.setApi(provider.getApi(fromChains[0]));
     await karura.setApi(provider.getApi(fromChains[1]));
-    await heiko.setApi(provider.getApi(fromChains[2]));
     await bifrost.setApi(provider.getApi(fromChains[3]));
     await statemine.setApi(provider.getApi(fromChains[4]));
     await kusama.setApi(provider.getApi(fromChains[5]));
 
     const bridge = new Bridge({
-      adapters: [kintsugi, karura, heiko, bifrost, statemine, kusama],
+      adapters: [kintsugi, karura, bifrost, statemine, kusama],
     });
 
-    // expected destinations: 1 (heiko, karura)
+    // expected destinations: 1 (karura)
     expect(
       bridge.router.getDestinationChains({
         from: chains.kintsugi,
@@ -102,7 +99,7 @@ describe.skip("interlay-adapter should work", () => {
       }).length
     ).toEqual(2);
 
-    // expected destinations: 2 (heiko and karura)
+    // expected destinations: 2 (karura)
     expect(
       bridge.router.getDestinationChains({
         from: chains.kintsugi,
@@ -125,7 +122,6 @@ describe.skip("interlay-adapter should work", () => {
     ).toEqual(1);
 
     
-    await runMyTestSuite(testAccount, bridge, "kintsugi", "heiko", "KBTC");
     await runMyTestSuite(testAccount, bridge, "kintsugi", "karura", "KINT");
     await runMyTestSuite(testAccount, bridge, "kintsugi", "karura", "KBTC");
     await runMyTestSuite(testAccount, bridge, "kintsugi", "karura", "LKSM");
@@ -136,7 +132,7 @@ describe.skip("interlay-adapter should work", () => {
   });
 
   test("connect interlay to do xcm", async () => {
-    const fromChains = ["interlay", "polkadot", "statemint", "hydra", "acala", "parallel", "astar"] as ChainName[];
+    const fromChains = ["interlay", "polkadot", "statemint", "hydra", "acala", "astar"] as ChainName[];
 
     await connect(fromChains);
 
@@ -146,7 +142,6 @@ describe.skip("interlay-adapter should work", () => {
     const hydra = new HydraAdapter();
 
     const acala = new AcalaAdapter();
-    const parallel = new ParallelAdapter();
     const astar = new AstarAdapter();
 
     await Promise.all([
@@ -155,13 +150,12 @@ describe.skip("interlay-adapter should work", () => {
       statemint.setApi(provider.getApi(fromChains[2])),
       hydra.setApi(provider.getApi(fromChains[3])),
       acala.setApi(provider.getApi(fromChains[4])),
-      parallel.setApi(provider.getApi(fromChains[5])),
       astar.setApi(provider.getApi(fromChains[6]))
 
     ]);
 
     const bridge = new Bridge({
-      adapters: [interlay, polkadot, statemint, hydra, acala, parallel, astar],
+      adapters: [interlay, polkadot, statemint, hydra, acala, astar],
     });
 
     expect(
@@ -197,8 +191,6 @@ describe.skip("interlay-adapter should work", () => {
     await runMyTestSuite(testAccount, bridge, "interlay", "hydra", "IBTC");
     await runMyTestSuite(testAccount, bridge, "interlay", "acala", "IBTC");
     await runMyTestSuite(testAccount, bridge, "interlay", "acala", "INTR");
-    await runMyTestSuite(testAccount, bridge, "interlay", "parallel", "IBTC");
-    await runMyTestSuite(testAccount, bridge, "interlay", "parallel", "INTR");
     await runMyTestSuite(testAccount, bridge, "interlay", "astar", "IBTC");
     await runMyTestSuite(testAccount, bridge, "interlay", "astar", "INTR");
   });
