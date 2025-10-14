@@ -8,7 +8,6 @@ import { KintsugiAdapter, InterlayAdapter } from "./adapters/interlay";
 import { FN } from "./types";
 import { KusamaAdapter, PolkadotAdapter } from "./adapters/polkadot";
 import { StatemineAdapter, StatemintAdapter } from "./adapters/statemint";
-import { HeikoAdapter, ParallelAdapter } from "./adapters/parallel";
 import { AcalaAdapter, KaruraAdapter } from "./adapters/acala";
 import { BifrostKusamaAdapter, BifrostPolkadotAdapter } from "./adapters/bifrost";
 import { HydraAdapter } from "./adapters/hydradx";
@@ -29,11 +28,9 @@ describe.skip("Bridge sdk usage", () => {
     karura: new KaruraAdapter(),
     statemint: new StatemintAdapter(),
     statemine: new StatemineAdapter(),
-    heiko: new HeikoAdapter(),
     bifrost_polkadot: new BifrostPolkadotAdapter(),
     bifrost: new BifrostKusamaAdapter(),
     hydra: new HydraAdapter(),
-    parallel: new ParallelAdapter(),
     astar: new AstarAdapter(),
     phala: new PhalaAdapter(),
   };
@@ -176,7 +173,6 @@ describe.skip("Bridge sdk usage", () => {
     // kintsugi
     // printBidirectionalTxs("kintsugi", "kusama", "KSM");
     // printBidirectionalTxs("kintsugi", "statemine", "USDT");
-    // printBidirectionalTxs("kintsugi", "heiko", "KBTC");
     // printBidirectionalTxs("kintsugi", "karura", "KINT");
     // printBidirectionalTxs("kintsugi", "karura", "KBTC");
     // printBidirectionalTxs("kintsugi", "karura", "LKSM");
@@ -193,8 +189,6 @@ describe.skip("Bridge sdk usage", () => {
     // printBidirectionalTxs("interlay", "hydra", "INTR");
     // printBidirectionalTxs("interlay", "acala", "INTR");
     // printBidirectionalTxs("interlay", "acala", "IBTC");
-    // printBidirectionalTxs("interlay", "parallel", "INTR");
-    // printBidirectionalTxs("interlay", "parallel", "IBTC");
     // printBidirectionalTxs("interlay", "astar", "INTR");
     // printBidirectionalTxs("interlay", "astar", "IBTC");
     // printBidirectionalTxs("interlay", "bifrost_polkadot", "VDOT");
@@ -208,14 +202,12 @@ describe.skip("Bridge sdk usage", () => {
       ["kintsugi", "KINT"],
       ["karura", "KAR"],
       ["bifrost", "BNC"],
-      ["heiko", "HKO"],
       ["statemine", "KSM"],
       // polkadot network
       ["polkadot", "DOT"],
       ["interlay", "INTR"],
       ["acala", "ACA"],
       ["hydra", "HDX"],
-      ["parallel", "PARA"],
       ["bifrost_polkadot", "BNC"],
       ["statemint", "DOT"],
       ["phala", "PHA"],

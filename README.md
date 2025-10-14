@@ -15,7 +15,6 @@ And you're welcome to add your parachain-adapter into the SDK.
 | acala              | INTR IBTC |
 | astar              | INTR IBTC |
 | bifrost            | BNC VDOT  |
-| parallel           | INTR IBTC |
 | polkadot           | DOT       |
 | polkadot asset hub | USDT      |
 | hydradx            | HDX IBTC  |
@@ -25,7 +24,6 @@ And you're welcome to add your parachain-adapter into the SDK.
 | channel          | tokens         |
 | ---------------- | -------------- |
 | bifrost          | VKSM           |
-| heiko            | KBTC KINT      |
 | karura           | KBTC KINT LKSM |
 | kusama asset hub | USDT, KSM*     |
 
